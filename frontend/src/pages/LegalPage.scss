@@ -1,0 +1,93 @@
+@import "../styles/main.scss";
+
+.legal-page {
+  padding: 60px 0;
+  min-height: 60vh;
+
+  .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 2.5rem;
+      color: $color-dark;
+      margin-bottom: 40px;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .construction-message {
+      background: white;
+      border-radius: 10px;
+      padding: 50px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+
+      @media (max-width: 768px) {
+        padding: 30px 20px;
+      }
+
+      .icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        color: $color-dark;
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .contact-info {
+        margin-top: 40px;
+        font-weight: 600;
+        color: $color-dark;
+      }
+
+      .contact-details {
+        background-color: $color-light;
+        padding: 30px;
+        border-radius: 8px;
+        margin-top: 20px;
+
+        p {
+          margin-bottom: 15px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        a {
+          color: $color-primary;
+          text-decoration: none;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      // Styles du bouton retour
+      .btn-back {
+        margin-top: 30px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 15px 30px;
+        font-size: 1rem;
+      }
+    }
+  }
+}

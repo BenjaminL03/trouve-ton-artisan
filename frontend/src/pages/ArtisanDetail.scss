@@ -1,0 +1,253 @@
+@import "../styles/main.scss";
+
+.artisan-detail {
+  padding: 40px 0;
+  min-height: 70vh;
+
+  .breadcrumb {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #666;
+
+    a {
+      color: $color-primary;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .separator {
+      margin: 0 10px;
+    }
+  }
+
+  .artisan-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .artisan-info-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: fit-content;
+
+    .badge-top {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: $color-accent;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .artisan-image {
+      margin-bottom: 20px;
+
+      .image-placeholder {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        background: $color-light;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+          font-size: 4rem;
+        }
+      }
+    }
+
+    .artisan-name {
+      font-size: 1.8rem;
+      text-align: center;
+      color: $color-dark;
+      margin-bottom: 15px;
+    }
+
+    .artisan-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+
+      .stars {
+        display: flex;
+        gap: 3px;
+
+        .star {
+          font-size: 1.5rem;
+
+          &.filled {
+            color: #ffc107;
+          }
+
+          &.half {
+            color: #ffc107;
+            opacity: 0.5;
+          }
+
+          &.empty {
+            color: #ddd;
+          }
+        }
+      }
+
+      .note-value {
+        font-weight: 600;
+        color: $color-dark;
+      }
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid $color-light;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      strong {
+        color: $color-dark;
+      }
+
+      span,
+      a {
+        color: #666;
+      }
+
+      a {
+        color: $color-primary;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .about-section {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 2px solid $color-light;
+
+      h3 {
+        color: $color-dark;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .contact-form-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      color: $color-dark;
+      margin-bottom: 10px;
+    }
+
+    .form-description {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      .form-group {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          font-weight: 600;
+          color: $color-dark;
+          margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 12px 15px;
+          border: 2px solid $color-light;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-family: inherit;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: $color-primary;
+          }
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+      }
+
+      .btn {
+        width: 100%;
+        padding: 15px;
+        background-color: $color-primary;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover:not(:disabled) {
+          background-color: $color-secondary;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+
+      .alert {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: center;
+
+        &.alert-success {
+          background-color: #d4edda;
+          color: #155724;
+          border: 1px solid #c3e6cb;
+        }
+      }
+    }
+  }
+}

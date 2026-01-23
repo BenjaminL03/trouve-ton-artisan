@@ -1,0 +1,46 @@
+@import "../styles/main.scss";
+
+.category-page {
+  padding: 40px 0;
+  min-height: 60vh;
+
+  .category-header {
+    margin-bottom: 40px;
+    text-align: center;
+
+    h1 {
+      font-size: 2.5rem;
+      color: $color-dark;
+      margin-bottom: 10px;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .artisan-count {
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+
+  .artisans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
