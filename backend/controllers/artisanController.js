@@ -122,7 +122,7 @@ exports.getArtisansByCategory = async (req, res) => {
   }
 };
 
-// Rechercher des artisans par nom
+// Rechercher des artisans par nom, ville ou spécialité
 exports.searchArtisans = async (req, res) => {
   try {
     const { q } = req.query;
@@ -135,9 +135,26 @@ exports.searchArtisans = async (req, res) => {
 
     const artisans = await Artisan.findAll({
       where: {
-        nom: {
-          [Op.like]: `%${q}%`,
-        },
+        [Op.or]: [
+          // Chercher dans le nom de l'artisan
+          {
+            nom: {
+              [Op.like]: `%${q}%`,
+            },
+          },
+          // Chercher dans la ville
+          {
+            ville: {
+              [Op.like]: `%${q}%`,
+            },
+          },
+          // Chercher dans la spécialité
+          {
+            "$specialite.nom$": {
+              [Op.like]: `%${q}%`,
+            },
+          },
+        ],
       },
       include: [
         {

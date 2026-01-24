@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { artisanService } from "../services/api";
+import { artisanService, contactService } from "../services/api";
 import "./ArtisanDetail.scss";
 
 const ArtisanDetail = () => {
@@ -64,7 +64,7 @@ const ArtisanDetail = () => {
     return stars;
   };
 
-  // Gestion du formulaire
+  // Gestion du formulaire - CHANGEMENT DES CHAMPS
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -72,19 +72,36 @@ const ArtisanDetail = () => {
     });
   };
 
+  // Soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Simulation d'envoi (à implémenter avec l'API contact plus tard)
     setFormStatus("sending");
 
-    setTimeout(() => {
-      setFormStatus("success");
-      setFormData({ nom: "", email: "", objet: "", message: "" });
+    try {
+      // Préparer les données à envoyer
+      const contactData = {
+        ...formData,
+        artisanEmail: artisan.email, // Email de l'artisan
+      };
 
-      // Réinitialiser le message après 3 secondes
-      setTimeout(() => setFormStatus(null), 3000);
-    }, 1000);
+      // Appel API
+      const response = await contactService.send(contactData);
+
+      if (response.data.success) {
+        setFormStatus("success");
+        setFormData({ nom: "", email: "", objet: "", message: "" });
+
+        // Réinitialiser le message après 5 secondes
+        setTimeout(() => setFormStatus(null), 5000);
+      } else {
+        setFormStatus("error");
+        setTimeout(() => setFormStatus(null), 5000);
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du formulaire:", error);
+      setFormStatus("error");
+      setTimeout(() => setFormStatus(null), 5000);
+    }
   };
 
   if (loading) {
@@ -179,7 +196,6 @@ const ArtisanDetail = () => {
                 </a>
               </div>
             )}
-
             {/* À propos */}
             {artisan.a_propos && (
               <div className="about-section">
@@ -262,7 +278,14 @@ const ArtisanDetail = () => {
 
               {formStatus === "success" && (
                 <div className="alert alert-success">
-                  ✓ Message envoyé avec succès !
+                  ✓ Message envoyé avec succès ! L'artisan vous répondra sous
+                  48h.
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div className="alert alert-error">
+                  ✗ Erreur lors de l'envoi. Veuillez réessayer.
                 </div>
               )}
             </form>
