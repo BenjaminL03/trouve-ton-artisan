@@ -1,8 +1,6 @@
-// Configuration de la connexion à la base de données
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-// Création de l'instance Sequelize
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -11,28 +9,17 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: "mysql",
-    logging: false, // Désactive les logs SQL (mettre console.log pour débugger)
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
+    dialectOptions: {
+      ssl:
+        process.env.DB_SSL === "true"
+          ? {
+              require: true,
+              rejectUnauthorized: false, // ← CHANGEMENT ICI : false au lieu de true
+            }
+          : false,
     },
-    define: {
-      timestamps: true, // Active created_at et updated_at
-      underscored: true, // Utilise snake_case (created_at au lieu de createdAt)
-    },
+    logging: false,
   },
 );
 
-// Test de la connexion
-const testConnection = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("✅ Connexion à la base de données réussie !");
-  } catch (error) {
-    console.error("❌ Erreur de connexion à la base de données:", error);
-  }
-};
-
-module.exports = { sequelize, testConnection };
+module.exports = sequelize;
