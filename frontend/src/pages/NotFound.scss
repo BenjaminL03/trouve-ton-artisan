@@ -1,53 +1,117 @@
-@import "../styles/main.scss";
-
-.not-found-page {
-  padding: 80px 0;
-  min-height: 70vh;
+.not-found {
+  min-height: calc(100vh - 200px);
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-image: url("/404.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+  }
 
   .not-found-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    background: white;
+    padding: 50px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
 
-    .error-illustration {
-      margin-bottom: 30px;
+    @media (max-width: 768px) {
+      padding: 30px 20px;
+      margin: 20px;
+    }
 
-      .error-code {
-        font-size: 8rem;
-        font-weight: 900;
-        color: $color-primary;
-        opacity: 0.3;
-        display: block;
-        line-height: 1;
+    .warning-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      background: #ffc107;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+    }
 
-        @media (max-width: 768px) {
-          font-size: 6rem;
+    h1 {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .contact-details {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+
+      p {
+        margin: 5px 0;
+        color: #333;
+      }
+
+      .phone {
+        margin-top: 15px;
+
+        a {
+          color: #0074c7;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1.1rem;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: $color-dark;
-      margin-bottom: 20px;
+    .btn-return {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: #00497c;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
 
-      @media (max-width: 768px) {
-        font-size: 2rem;
+      &:hover {
+        background-color: #0074c7;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 116, 199, 0.3);
       }
-    }
-
-    .error-message {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-
-    .btn {
-      padding: 15px 40px;
-      font-size: 1.1rem;
     }
   }
 }

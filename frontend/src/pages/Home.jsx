@@ -21,71 +21,86 @@ const Home = () => {
         setLoading(false);
       }
     };
+
     fetchTopArtisans();
   }, []);
 
   return (
-    <div className="home-page">
-      {/* Hero Section */}
+    <div className="home">
+      {/* Section Hero */}
       <section className="hero">
         <div className="container">
-          <h1>Trouvez le bon artisan pour vos projets</h1>
-          <p className="subtitle">
+          <h1 className="hero-title">
+            Trouvez le bon artisan pour vos projets
+          </h1>
+          <p className="hero-subtitle">
             La région Auvergne-Rhône-Alpes vous accompagne dans votre recherche
             d'artisans qualifiés
           </p>
         </div>
       </section>
 
-      {/* Section "Comment ça marche" */}
+      {/* Section Comment trouver mon artisan */}
       <section className="how-it-works">
         <div className="container">
-          <h2>Comment trouver mon artisan ?</h2>
+          <h2 className="section-title">Comment trouver mon artisan ?</h2>
 
-          <div className="steps">
-            <div className="step">
-              <div className="step-number">1</div>
-              <h3>Choisir la catégorie d'artisanat</h3>
-              <p>
-                Sélectionnez dans le menu la catégorie qui correspond à vos
-                besoins : Bâtiment, Services, Fabrication ou Alimentation.
-              </p>
+          <div className="steps-container">
+            <div className="step-card">
+              <div className="step-header">
+                <div className="step-number">1</div>
+                <div className="step-icon">☰</div>
+              </div>
+              <div className="step-content">
+                <p>
+                  <strong>Choisir la catégorie d'artisanat dans le menu</strong>
+                </p>
+              </div>
             </div>
 
-            <div className="step">
-              <div className="step-number">2</div>
-              <h3>Choisir un artisan</h3>
-              <p>
-                Parcourez la liste des artisans disponibles et consultez leurs
-                profils, notes et spécialités.
-              </p>
+            <div className="step-card">
+              <div className="step-header">
+                <div className="step-number">2</div>
+                <div className="step-icon">🔧</div>
+              </div>
+              <div className="step-content">
+                <p>
+                  <strong>Choisir un artisan</strong>
+                </p>
+              </div>
             </div>
 
-            <div className="step">
-              <div className="step-number">3</div>
-              <h3>Le contacter via le formulaire de contact</h3>
-              <p>
-                Remplissez le formulaire sur la page de l'artisan pour lui
-                envoyer directement votre demande.
-              </p>
+            <div className="step-card">
+              <div className="step-header">
+                <div className="step-number">3</div>
+                <div className="step-icon">📇</div>
+              </div>
+              <div className="step-content">
+                <p>
+                  <strong>Le contacter via le formulaire de contact</strong>
+                </p>
+              </div>
             </div>
 
-            <div className="step">
-              <div className="step-number">4</div>
-              <h3>Une réponse sera apportée sous 48h</h3>
-              <p>
-                L'artisan vous contactera dans les 48 heures pour discuter de
-                votre projet et établir un devis.
-              </p>
+            <div className="step-card">
+              <div className="step-header">
+                <div className="step-number">4</div>
+                <div className="step-icon">⏰</div>
+              </div>
+              <div className="step-content">
+                <p>
+                  <strong>Une réponse sera apportée sous 48h</strong>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section "Artisans du mois" */}
+      {/* Section Artisans du mois */}
       <section className="top-artisans">
         <div className="container">
-          <h2>Les artisans du mois</h2>
+          <h2 className="section-title">Les artisans du mois</h2>
 
           {loading ? (
             <p>Chargement...</p>

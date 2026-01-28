@@ -54,9 +54,17 @@ const ArtisanCard = ({ artisan }) => {
 
         {/* Spécialité */}
         <p className="artisan-specialty">{artisan.specialite?.nom}</p>
+      </div>
+      {/* Localisation + Bouton */}
+      <div className="card-footer">
+        <div className="artisan-location">
+          <span className="location-icon">📍</span>
+          {artisan.ville}
+        </div>
 
-        {/* Localisation */}
-        <p className="artisan-location">📍 {artisan.ville}</p>
+        <Link to={`/artisan/${artisan.id}`} className="btn-profile">
+          Voir le profil
+        </Link>
       </div>
     </Link>
   );
