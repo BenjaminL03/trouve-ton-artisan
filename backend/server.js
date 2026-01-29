@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
-const { sequelize, testConnection } = require("./config/database");
+const sequelize = require("./config/database");
 
 // Initialisation de l'application
 const app = express();
@@ -81,8 +81,8 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     // Test de la connexion à la base de données
-    await testConnection();
-
+    await sequelize.authenticate();
+    console.log("✅ Connexion à la base de données réussie !");
     // Démarrage du serveur
     app.listen(PORT, () => {
       console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
@@ -95,3 +95,4 @@ const startServer = async () => {
 };
 
 startServer();
+// Déploiement Render
