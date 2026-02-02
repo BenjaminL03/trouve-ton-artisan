@@ -235,7 +235,7 @@ Les maquettes complètes sont disponibles dans le dossier `fichiers-a-joindre-au
 
 # Auteur
 
-**Benjamin LEOCADIE**
+**Benjamin LEO**
 
 - GitHub: [@BenjaminL03](https://github.com/BenjaminL03)
 - Projet: Développeur Web - Centre Européen de Formation

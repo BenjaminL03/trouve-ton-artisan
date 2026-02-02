@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { categoryService } from "../services/api";
 import "./Header.scss";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -36,7 +37,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="logo">
             <img
-              src="/logo.png"
+              src={logo}
               alt="Trouve ton artisan - Région Auvergne-Rhône-Alpes"
             />
           </Link>
